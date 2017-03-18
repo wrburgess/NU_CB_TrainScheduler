@@ -1,0 +1,66 @@
+<!doctype html>
+<head>
+  <title>NU_CB_TrainScheduler</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+  <main class="container">
+    <div class="jumbotron">
+      <h1>Train Schedule</h1>
+      <p>Time to hop on a train!</p>
+    </div>
+    <div class="train-schedule-table">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Current Train Schedule</h1>
+        </div>
+        <div class="panel-body">
+          <table class="train-data table table-striped table-hover table-condensed">
+            <tr>
+              <th>Train Name</th>
+              <th>Destination</th>
+              <th>Frequency (min)</th>
+              <th>Next Arrival</th>
+              <th>Minutes Away</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="train-schedule-form">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Add Train</h1>
+        </div>
+        <div class="panel-body">
+          <form class="train-form">
+            <div class="form-group">
+              <label for="train-name">Train Name</label>
+              <input type="text" class="form-control" id="train-name"></input>
+            </div>
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <input type="text" class="form-control" id="destination"></input>
+            </div>
+            <div class="form-group">
+              <label for="first-train-time">First Train Time (hh:mm - military time)</label>
+              <input type="text" class="form-control" id="first-train-time"></input>
+            </div>
+            <div class="form-group">
+              <label for="frequency">Frequency (min)</label>
+              <input type="text" class="form-control" id="frequency"></input>
+            </div>
+            <button type="submit" class="btn btn-default" id="submit">Submit</button>
+          </form>
+        </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
