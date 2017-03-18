@@ -47,16 +47,19 @@ function initApp() {
     let firstTrainTime = snapshot.val().firstTrainTime;
     let frequency = snapshot.val().frequency;
 
-    // determine arrival time and minutes away
+    // determine current time and first train time 
     let firstTrainTimeConverted = moment(firstTrainTime, "hh:mm");
     let currentTime = moment();
-    let timeDiff = currentTime.diff(firstTrainTimeConverted, "minutes"); 
 
-    let minutesAway = frequency - timeDiff % frequency 
-    let arrivalTime = moment().add(minutesAway, "minutes").format("h:mm A");
-    
-    console.log(minutesAway);
-    console.log(arrivalTime);
+    // determine arrival time
+    let timeDiff = Math.abs(currentTime.diff(firstTrainTimeConverted, "minutes"));
+    let numFreq = Math.ceil(timeDiff / frequency);
+    let numMinutes = numFreq * frequency;
+    let arrivalTime = firstTrainTimeConverted.add(numMinutes, 'm');
+     
+    // determine minutes away and reformat arrival time
+    let minAway = Math.abs(currentTime.diff(arrivalTime, "minutes"));
+    let arrivalTimeFormatted = arrivalTime.format("hh:mm A");
 
     // add values to table
     $('.train-data').append(`
@@ -64,8 +67,8 @@ function initApp() {
         <td>${trainName}</td>
         <td>${destination}</td>
         <td>${frequency}</td>
-        <td>${arrivalTime}</td>
-        <td>${minutesAway}</td>
+        <td>${arrivalTimeFormatted}</td>
+        <td>${minAway}</td>
       </tr>
     `);
   });
